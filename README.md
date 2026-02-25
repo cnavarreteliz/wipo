@@ -1,51 +1,64 @@
-# WIPO Innovation Capabilities Outlook 2026 Analysis
+# WIPO Innovation Capabilities Analysis 2026
 
-This repository contains analysis notebooks for the **WIPO Innovation Capabilities Outlook 2026** datasets.
+This repository provides a comprehensive framework for analyzing the **WIPO Innovation Capabilities Outlook 2026** datasets. It combines traditional economic complexity indicators with modular R-based scientific replications.
 
-## Data
-Original data files are not included in this repository due to their size. You must download them manually from the WIPO portal:
+---
 
-🔗 **[Download Data (ZIP)](https://tind.wipo.int/record/59177?v=zip)**
-
-After downloading, extract the content into a folder named `data/` in the root of this project. The structure should look like this:
+## Project Structure
 
 ```text
 /
-├── data/
-│   ├── README.md
-│   ├── outputs.parquet
-│   ├── capabilities.parquet
-│   ├── densities.parquet
-│   ├── field_complexities.parquet
-│   ├── fields.parquet
-│   ├── potentials.parquet
-│   ├── unit_complexities.parquet
-│   └── units.parquet
-├── analysis.ipynb
-└── analysis_ecomplexity.ipynb
+├── data/                    # Raw WIPO Data (Parquet format)
+├── r_analysis/              # R implementation (Scientific Replication)
+│   └── README.md            # [Source of Truth for R Analysis]
+├── analysis.ipynb           # Quick-Start: Global Leaderboards & Chile Focus
+├── analysis_ecomplexity.ipynb # Deep-Dive: Harvard py-ecomplexity Metrics
+├── analysis_proximity.ipynb # Advanced: Proximity Clustering & Hierarchical UI
+└── README.md                # Project Overview (Python Focus)
 ```
 
-## Installation
+## Installation & Setup
 
-### For Beginners (Recommended)
-If you have never used Python before, we recommend installing **[Anaconda](https://www.anaconda.com/download)** or **[Miniconda](https://docs.conda.io/en/latest/miniconda.html)**. These distributions include Python and the management tools necessary to set up your environment easily.
-
-Once installed, open your terminal (or Anaconda Prompt) and run:
+### Python Environment (Primary)
+We recommend **Anaconda** or **Miniconda** for managing dependencies.
 
 ```bash
-conda install pandas numpy matplotlib pyarrow jupyter
-pip install ecomplexity
+# Core dependencies
+pip install pandas numpy matplotlib ecomplexity pyarrow jupyter seaborn
 ```
 
-### For Advanced Users
-If you already have Python, simply install the required libraries:
+### R Environment (Optional)
+The R analysis is modular and requires the `EconGeo` package.
+**For R setup instructions, see [r_analysis/README.md](./r_analysis/README.md).**
 
-```bash
-pip install pandas numpy matplotlib ecomplexity pyarrow jupyter
-```
-
-*Note: `pyarrow` is required for parquet file support.*
+---
 
 ## Analysis Included
-1. `analysis.ipynb`: General WIPO analysis, replication of report charts, and deep dive into Chile's innovation trends and evolution.
-2. `analysis_ecomplexity.ipynb`: Advanced complexity analysis using the Economic Complexity methodology (Harvard's `py-ecomplexity` library) to independently compute RCA, ECI, PCI, and COG.
+
+### 1. **`analysis.ipynb`** (Executive View)
+*   **Leaderboards**: Identification of top-tier innovation ecosystems for 2023.
+*   **Chile Deep-Dive**: Exhaustive analysis of Chile's evolution and strategic diversification.
+*   **WIPO Replication**: Visual replication of key charts from the official 2026 outlook.
+
+### 2. **`analysis_ecomplexity.ipynb`** (Harvard Methodology)
+*   Uses the `py-ecomplexity` library to compute:
+    *   **ECI / PCI**: Economic and Product Complexity Indices.
+    *   **RCA**: Revealed Comparative Advantage.
+    *   **COG**: Complexity Outlook Gain.
+*   **Multi-Dimensional**: Analysis across Production (P), Technology (T), Science (S), and Entrepreneurial (E) dimensions.
+
+### 3. **`analysis_proximity.ipynb`** (Clustering & Topology)
+*   **Product Space**: Map of the innovation topology using `py-ecomplexity`.
+*   **Hierarchical Clustering**: Uses the proximity matrix to cluster related fields.
+*   **Interactive Visuals**: Glassmorphism-inspired plots for innovation relatedness.
+
+### 4. **`r_analysis/`** (EconGeo Replication)
+*   A standalone R environment replicating Pierre-Alexandre Balland's methodology.
+*   Covers **Relatedness Density** and **Diversification Potential**.
+*   *Please refer to the internal directory for execution.*
+
+---
+
+## Data Source
+Datasets must be manually downloaded and placed in the `/data` folder.
+🔗 **[Direct Download (WIPO Portal)](https://tind.wipo.int/record/59177?v=zip)**
